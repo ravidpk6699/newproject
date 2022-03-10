@@ -1,14 +1,14 @@
-copyArtifacts(projectName: 'project-OSS');
 pipeline {
      agent any
-	   tools {
-  maven 'maven3'
+	   stages {
+    stage('Copy Archive') {
+         steps {
+             script {
+                step ([$class: 'CopyArtifact',
+                    projectName: 'project-OSS',
+                    filter: "target/webapp*.war",
+                    target: 'Infra']);
+            }
+        }
+    }
 }
- stages{
-   stage('build') {
-    steps{
-	  sh 'mvn clean package'
-	  }
-	  }
-	  }
-	  }
