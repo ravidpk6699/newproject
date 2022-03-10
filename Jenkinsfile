@@ -1,3 +1,4 @@
+copyArtifacts(projectName: 'project-OSS');
 pipeline {
      agent any
 	   tools {
